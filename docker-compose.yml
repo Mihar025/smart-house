@@ -1,0 +1,31 @@
+services:
+  postgres:
+    container_name: my_ps_sql
+    image: postgres
+    environment:
+      POSTGRES_USER: misha
+      POSTGRES_PASSWORD: misha
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+    networks:
+      microservices-net:
+    restart: unless-stopped
+
+
+  mail-dev:
+    container_name: ms_mail_dev
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
+
+networks:
+  microservices-net:
+    driver: bridge
+
+volumes:
+  postgres:
+
