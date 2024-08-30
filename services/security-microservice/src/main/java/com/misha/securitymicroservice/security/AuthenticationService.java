@@ -1,11 +1,17 @@
 package com.misha.securitymicroservice.security;
 
 
-import com.misha.securitymicroservice.*;
 import com.misha.securitymicroservice.exception.EmailorPasswordAlreadyExistException;
+import com.misha.securitymicroservice.model.User;
+import com.misha.securitymicroservice.model.UserRoles;
 import com.misha.securitymicroservice.registrationRequests.RegistrationBusinessAccountRequest;
 import com.misha.securitymicroservice.registrationRequests.RegistrationRequest;
+import com.misha.securitymicroservice.repository.RoleRepository;
+import com.misha.securitymicroservice.repository.TokenRepository;
+import com.misha.securitymicroservice.repository.UserRepository;
 import com.misha.securitymicroservice.role.Role;
+import com.misha.securitymicroservice.service.EmailService;
+import com.misha.securitymicroservice.service.EmailTemplateName;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -109,13 +115,11 @@ public class AuthenticationService {
                 .user(user)
                 .build();
         tokenRepository.save(token);
-
         return generatedToken;
     }
 
     private void sendValidationEmail(User user) throws MessagingException {
         var newToken = generateAndSaveActivationToken(user);
-
         emailService.sendEmail(
                 user.getEmail(),
                 user.getFullName(),
@@ -190,11 +194,11 @@ public class AuthenticationService {
     }
 
 
-    public void registerUser(RegistrationRequest request) throws MessagingException{
+    public void registerUser(RegistrationRequest request) throws MessagingException {
         register(request, UserRoles.USER);
     }
 
-    public void registerBusinessAccount(RegistrationBusinessAccountRequest request) throws MessagingException{
+    public void registerBusinessAccount(RegistrationBusinessAccountRequest request) throws MessagingException {
         registerBusiness(request, UserRoles.BUSINESS_OWNER);
     }
 
