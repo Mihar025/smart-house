@@ -1,5 +1,6 @@
-package com.misha.securitymicroservice;
+package com.misha.securitymicroservice.config;
 
+import com.misha.securitymicroservice.model.User;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;

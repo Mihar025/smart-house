@@ -1,1 +1,5 @@
-spring.application.name=security-microservice
+spring:
+  application:
+    name: security-microservice
+  config:
+    import: optional:configserver:http://localhost:8888

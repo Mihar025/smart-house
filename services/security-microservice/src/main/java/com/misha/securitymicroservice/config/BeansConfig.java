@@ -1,10 +1,7 @@
-package com.misha.securitymicroservice;
+package com.misha.securitymicroservice.config;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.CacheManager;
-import org.springframework.cache.caffeine.CaffeineCache;
-import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
@@ -21,8 +18,6 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static org.springframework.http.HttpHeaders.*;
 

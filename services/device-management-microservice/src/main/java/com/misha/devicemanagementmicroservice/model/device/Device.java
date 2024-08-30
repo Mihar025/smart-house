@@ -39,7 +39,8 @@ public class Device {
     private boolean isActive;
 
     // When device already register use that like dto for checking status of device!
-
+    private String turnOn;
+    private String turnOff;
     @Enumerated(EnumType.STRING)
     private DeviceStatus status;
     private String location;
