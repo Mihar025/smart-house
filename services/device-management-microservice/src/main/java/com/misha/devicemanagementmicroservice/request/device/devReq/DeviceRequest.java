@@ -1,17 +1,18 @@
-package com.misha.devicemanagementmicroservice.request.device;
+package com.misha.devicemanagementmicroservice.request.device.devReq;
 
 import com.misha.devicemanagementmicroservice.model.device.DeviceType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class DeviceRequest {
 
+    private Integer id;
     @NotNull(message = "This field cannot be empty!")
     @NotBlank(message = "This field cannot be blank!")
     private String deviceName;
